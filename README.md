@@ -28,6 +28,16 @@ interactions the rigid rules miss), across a clean 5-stage pipeline.
 | 04 | `04_modelling.py` | Train a multinomial logistic regression, evaluate, interpret coefficients, score every job |
 | 05 | `05_output.py` | Assign the next best action per job, summarise money at risk, per-account breakdown |
 
+### Documentation
+
+Each stage has a write-up (methodology, tables, diagrams) in [`docs/`](docs/):
+
+- [01 — Data extraction + v1 labels](docs/01_data_extraction.md)
+- [02 — Exploratory data analysis](docs/02_eda.md)
+- [03 — Feature engineering](docs/03_feature_engineering.md) *(feature-group diagram + tables)*
+- [04 — Modelling](docs/04_modelling.md)
+- [05 — Output & deliverables](docs/05_output.md)
+
 ### The four categories
 
 | Category | Meaning |
