@@ -17,6 +17,33 @@ interactions the rigid rules miss), across a clean 5-stage pipeline.
 > output charts**. A small amount of documented label noise is injected so the
 > example model isn't trivially perfect.
 
+## Architecture
+
+```mermaid
+flowchart LR
+    SRC["<b>Source data</b><br/>jobs · quotes · invoices<br/>appointments · estimates · fe_actions"]
+    S0["<b>00 · Generate</b><br/>synthetic dataset"]
+    S1["<b>01 · Extract</b><br/>+ v1 rule-based labels"]
+    S2["<b>02 · EDA</b><br/>profiling &amp; charts"]
+    S3["<b>03 · Features</b><br/>~40 features · 7 groups"]
+    S4["<b>04 · Model</b><br/>multinomial logistic regression"]
+    S5["<b>05 · Output</b><br/>next best action · money at risk"]
+
+    S0 --> SRC --> S1
+    S1 --> S2
+    S1 --> S3
+    S2 -. informs .-> S3
+    S3 --> S4 --> S5
+
+    classDef stage fill:#eef4ff,stroke:#4a6fa5,color:#1b2a41;
+    classDef data fill:#fff3e0,stroke:#c98a2b,color:#3a2a10;
+    class S0,S1,S2,S3,S4,S5 stage;
+    class SRC data;
+```
+
+*Rule-based **v1** generates the training labels in stage 01; model-based **v2**
+learns from them in stage 04. Full write-ups per stage are in [`docs/`](docs/).*
+
 ## The pipeline
 
 | Stage | Script | What it does |
